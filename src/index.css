@@ -1,0 +1,14 @@
+/* 設定網頁背景圖片 */
+body {
+  background-image: url('images/image 3.png'); /* 設定背景圖片 */
+  background-size: cover; /* 使圖片覆蓋整個頁面 */
+  background-position: center center; /* 背景圖片居中顯示 */
+  background-attachment: fixed; /* 使背景圖片固定在頁面 */
+  margin: 0; /* 去掉預設的頁面邊距 */
+  height: 100vh; /* 設定高度為視窗高度 */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

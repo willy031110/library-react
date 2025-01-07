@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+      "target": "es5", // 編譯為 ES5 兼容的 JavaScript
+      "lib": ["dom", "es2015"], // 指定所需的語言庫
+      "allowJs": true, // 允許 JavaScript 文件
+      "jsx": "react-jsx", // 啟用 JSX 支援
+      "module": "esnext", // 使用 ES 模組
+      "moduleResolution": "node", // 解析模組時遵循 Node.js 規範
+      "strict": true, // 啟用所有嚴格類型檢查
+      "esModuleInterop": true, // 使 CommonJS 模組與 ES 模組之間的互操作性更好
+      "skipLibCheck": true, // 跳過庫檢查以加快編譯速度
+      "forceConsistentCasingInFileNames": true // 保證文件名一致性
+    },
+    "include": [
+      "src/**/*" // 包含 src 目錄下的所有檔案
+    ],
+    "exclude": [
+      "node_modules" // 排除 node_modules 目錄
+    ]
+  }
+  

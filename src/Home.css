@@ -1,0 +1,58 @@
+
+/* 父容器設為 Flexbox */
+div {
+    display: flex;
+    justify-content: center; /* 水平居中對齊 */
+    align-items: center;     /* 垂直居中對齊 */
+    gap: 200px;
+    height: 100vh;           /* 設定父容器的高度為視窗的高度 */
+  }
+
+
+  
+  /* 查詢書籍按鈕樣式 */
+  .query-button {
+    width: 300px;  /* 設定寬度 */
+    height: 310px;  /* 設定高度 */
+    background-image: url('images/query.png');  /* 使用圖片作為背景 */
+    background-size: cover;  /* 使圖片覆蓋按鈕 */
+    background-position: top center;  /* 背景圖片顯示在按鈕的上方 */
+    background-color: white;
+    color: black;
+    border: none;  /* 設定邊框顏色 */
+    border-radius: 30%;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    flex-direction: column; /* 讓內容垂直排列 */
+  }
+  
+  
+  /* 查詢書籍按鈕懸停樣式 */
+  .query-button:hover {
+    background-color: rgb(246, 246, 246);
+  }
+  
+  /* 編輯資料按鈕樣式 */
+  .edit-button {
+    width: 300px;  /* 設定寬度 */
+    height: 310px;  /* 設定高度 */
+    background-image: url('images/edit.png');  /* 使用圖片作為背景 */
+    background-size: cover;  /* 使圖片覆蓋按鈕 */
+    background-position: top center;  /* 背景圖片顯示在按鈕的上方 */
+    background-color: white;
+    color: black;
+    border: none;  /* 設定邊框顏色 */
+    border-radius: 30%;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    flex-direction: column; /* 讓內容垂直排列 */
+  }
+  
+  
+  /* 查詢書籍按鈕懸停樣式 */
+  .edit-button:hover {
+    background-color: rgb(246, 246, 246);
+  }
+  
