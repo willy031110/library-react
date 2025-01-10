@@ -1,0 +1,16 @@
+/* UpdateBook.css */
+.original-book-info {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+  }
+  
+  .original-book-info h3 {
+    margin-top: 0;
+  }
+  
+  .original-book-info p {
+    margin: 5px 0;
+  }
+  
