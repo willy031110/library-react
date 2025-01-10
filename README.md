@@ -1,70 +1,184 @@
-# Getting Started with Create React App
+# README
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 專案概述
 
-## Available Scripts
+此專案為一個簡單的書籍管理系統，用戶可以查詢、編輯、刪除和更新書籍資訊。通過本專案，我們希望達成以下目標：
 
-In the project directory, you can run:
+- 熟悉前後端分離架構的開發過程。
+- 掌握 RESTful API 的設計與實現。
+- 提供直觀且使用者友善的界面，提升數據管理效率。
 
-### `npm start`
+## 技術選擇
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 前端技術：
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **React + TypeScript**：
+   - 基於組件的開發方式，提高代碼的可重用性與可維護性。
+   - TypeScript 提供靜態代碼檢查，減少運行時錯誤。
 
-### `npm test`
+### 後端技術：
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Node.js + Express**：
+   - 高效處理異步請求，適合構建 RESTful API。
+   - 豐富的中間件庫，提高開發效率。
 
-### `npm run build`
+### 資料庫：
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **MongoDB**：
+   - 提供靈活的文檔存儲結構，用於處理書籍數據。
+   - 高性能與可擴展性，適合快速開發。
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 架構概述
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **前端**：使用 React + TypeScript 處理 UI 渲染和用戶交互。
+- **後端**：使用 Node.js + Express 提供 API，處理前端請求並與資料庫交互。
+- **資料庫**：使用 MongoDB 儲存書籍數據，支持 CRUD 操作。
 
-### `npm run eject`
+## 安裝與執行指引
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **安裝專案依賴：**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. **啟動後端伺服器：**
+   確保 MongoDB 已運行，然後啟動伺服器：
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   ```bash
+   npm run server
+   ```
 
-## Learn More
+3. **啟動前端開發伺服器：**
+   啟動 React 開發伺服器：
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```bash
+   npm start
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. **訪問應用程序：**
+   打開瀏覽器並訪問 `http://localhost:3000`。
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## API 規格說明文件
 
-### Analyzing the Bundle Size
+### 獲取所有書籍
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **路由：** `/api/v1/user/findall`
+- **HTTP 方法：** GET
+- **參數：** 無
+- **回應範例：**
+  ```json
+  {
+    "code": 200,
+    "body": [
+      {
+        "_id": "677fff41f4c03ec343c3b2bc",
+        "ISBN": "9781234567890",
+        "bookname": "Example Book",
+        "author": "Author Name",
+        "publisher": "Publisher Name",
+        "edition": "1"
+      }
+    ]
+  }
+  ```
 
-### Making a Progressive Web App
+### 查詢特定書籍
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **路由：** `/api/v1/user/findBook`
+- **HTTP 方法：** GET
+- **參數：**
+  - `ISBN` 或 `bookname`（必須提供一個）
+- **回應範例：**
+  ```json
+  {
+    "code": 200,
+    "body": {
+      "_id": "677fff41f4c03ec343c3b2bc",
+      "ISBN": "9781234567890",
+      "bookname": "Example Book",
+      "author": "Author Name",
+      "publisher": "Publisher Name",
+      "edition": "1"
+    }
+  }
+  ```
 
-### Advanced Configuration
+### 添加新書籍
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **路由：** `/api/v1/user/add`
+- **HTTP 方法：** POST
+- **參數：**
+  - `ISBN`（必填）
+  - `bookname`（必填）
+  - `author`（必填）
+  - `publisher`（必填）
+  - `edition`（必填）
+- **回應範例：**
+  ```json
+  {
+    "code": 201,
+    "message": "Book added successfully"
+  }
+  ```
 
-### Deployment
+### 更新書籍
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **路由：** `/api/v1/user/update?ID=<BookID>`
+- **HTTP 方法：** PUT
+- **參數：**
+  - 書籍資料（JSON 格式）
+- **回應範例：**
+  ```json
+  {
+    "code": 200,
+    "message": "Book updated successfully"
+  }
+  ```
 
-### `npm run build` fails to minify
+### 刪除書籍
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **路由：** `/api/v1/user/delete/<BookID>`
+- **HTTP 方法：** DELETE
+- **參數：** 無
+- **回應範例：**
+  ```json
+  {
+    "code": 200,
+    "message": "Book deleted successfully"
+  }
+  ```
+
+---
+
+## 架構圖與流程圖
+
+### 架構圖
+
+```text
++----------------------+        +--------------------+       +------------------+
+|      前端           | <----> |      後端           | <----> |     資料庫        |
+|  (React + TS)       |        |  (Node.js + Exp)   |        |    (MongoDB)     |
++----------------------+        +--------------------+       +------------------+
+```
+
+- **前端** 提供使用者界面，通過 HTTP 請求與後端 API 通信。
+- **後端** 接收來自前端的請求，處理業務邏輯並與資料庫交互。
+- **資料庫** 負責儲存和管理書籍相關數據。
+
+### CRUD 流程圖
+
+```text
+用戶操作 --> 前端發送請求 --> 後端接收請求 --> 與資料庫交互 --> 返回結果至前端 --> 顯示結果
+```
+
+#### 示例：
+
+1. **書籍查詢流程：**
+   - 用戶輸入查詢條件並點擊搜索按鈕。
+   - 前端向 `/api/v1/user/findBook` 發送 GET 請求。
+   - 後端根據參數查詢資料庫並返回匹配結果。
+   - 前端解析回應並顯示查詢結果。
+
